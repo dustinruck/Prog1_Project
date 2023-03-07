@@ -210,9 +210,6 @@ public static boolean safePassword(String password) {
     char prevChar = '\0'; // initialize to null character
     int consecutiveCount = 1;
     for (char c : password.toCharArray()) {
-        if (!isDomainChar(c)) {
-            return false;
-        }
         if (Character.isUpperCase(c)) {
             hasUpperCase = true;
         } else if (Character.isLowerCase(c)) {
