@@ -200,16 +200,46 @@ public class Validator {
 
     
     
-    public static boolean safePassword(String password) {
-    	
-        // check if input contains at least one alphanumeric character
-        boolean hasAlphaNum = false;
-        for (int i = 0; i < password.length(); i++) {
-            char c = password.charAt(i);
-            if (isAlphaNum(c)) {
-                hasAlphaNum = true;
-                break;
-            	}
+public static boolean safePassword(String password) {
+    boolean hasLowerCase = false;
+    boolean hasUpperCase = false;
+    boolean hasNumber = false;
+    boolean hasSpecialChar = false;
+    boolean isAlphanumeric = false;
+    boolean hasConsecutiveChar = false;
+    char prevChar = '\0'; // initialize to null character
+    int consecutiveCount = 1;
+    for (char c : password.toCharArray()) {
+        if (!isDomainChar(c)) {
+            return false;
+        }
+        if (Character.isUpperCase(c)) {
+            hasUpperCase = true;
+        } else if (Character.isLowerCase(c)) {
+            hasLowerCase = true;
+        } else if (Character.isDigit(c)) {
+            hasNumber = true;
+        } else if (isSpecialChar(c)) {
+            hasSpecialChar = true;
+        }
+        if (Character.isLetterOrDigit(c)) {
+            isAlphanumeric = true;
+        }
+        if (c == prevChar) {
+            consecutiveCount++;
+        } else {
+            consecutiveCount = 1;
+        }
+        if (consecutiveCount > 2) {
+            hasConsecutiveChar = true;
+            break;
+        }
+        prevChar = c;
+    }
+    return password.length() >= 7 && password.length() <= 15 &&
+           hasLowerCase && hasUpperCase && hasNumber && hasSpecialChar &&
+           isAlphanumeric && !hasConsecutiveChar;
+}
            
     
 
