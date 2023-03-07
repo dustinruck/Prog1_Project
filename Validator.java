@@ -197,8 +197,6 @@ public class Validator {
 
 }
 
-
-    
     
 public static boolean safePassword(String password) {
     boolean hasLowerCase = false;
@@ -219,7 +217,7 @@ public static boolean safePassword(String password) {
         } else if (isSpecialChar(c)) {
             hasSpecialChar = true;
         }
-        if (Character.isLetterOrDigit(c)) {
+        if (isAlphaNum(c)) {
             isAlphanumeric = true;
         }
         if (c == prevChar) {
