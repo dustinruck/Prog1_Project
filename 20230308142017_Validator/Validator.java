@@ -1,7 +1,6 @@
 // Fawzi Latosh  ID:6155197
 // Dustin Ruck  ID: 0234348
 
-package Prog1_Project;
 
 public class Validator {
 
