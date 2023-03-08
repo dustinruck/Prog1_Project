@@ -24,7 +24,7 @@ public class Validator {
 		//System.out.println(isEmail(newTest));		
 		//System.out.println(isUsername(userName));
 		//System.out.println(safePassword(passWord));
-	 
+	   
 	    
 		
 		
@@ -47,8 +47,7 @@ public class Validator {
 	       return false ;
 	      }        		
 	          } 
-	
-	       
+       
 
 public static boolean isPrefixChar(char prefCharac) {                 
 	 // If a character is not a letter, digit,  period, dash or underscore it's not a valid domain
@@ -58,6 +57,7 @@ public static boolean isPrefixChar(char prefCharac) {
  	       return false ;
  	      }        		
 	          }
+
 public static boolean isDomainChar(char domCharac) {                 
 	// If a character is not a letter, digit,  period, dash or underscore it's not a valid domain
 	 if (isSpecialChar(domCharac)|| isAlphaNum(domCharac)){
@@ -100,7 +100,7 @@ public static boolean isPrefix(String prefix) {
 	boolean word1bt1 = false;
 	boolean word1bt3 = false;
 	boolean word1bt2 = false;
- boolean word1bt4 = true;
+	boolean word1bt4 = true;
 	//check if it contains at least one character.
  if (prefix.length() > 1) 
 		 word1bt1 = true; 									     
@@ -118,7 +118,7 @@ public static boolean isPrefix(String prefix) {
 		word1bt4 = false; break;
 		 } 
  }
-	//check if it contains only alphanumeric .							
+	//check if it contains only alphanumeric as the first character.							
 	if (isAlphaNum(prefix.charAt(0))== true) {
 		word1bt3 = true; }		    	    
 	
@@ -181,15 +181,13 @@ public static boolean isDomain(String str) {
   // Loop through the characters in the second part of the domain
   for (int i = 0; i < secondPart.length(); i++) {
       char ch = secondPart.charAt(i);
-      // If a character is not a letter, it's not a valid domain
-  
       
+      // If a character is not a letter, it's not a valid domain
       if (!Character.isLetter(ch)) {
           return false;
      }
   }
-  return true;
-	
+  return true;	
 }
 
 
@@ -210,7 +208,7 @@ public static String isUsername(String username) {
  if (username == null || username.isEmpty()) {
      return "";
  }
-  // check if input contains 7 or fewer characters
+  // check if input contains more than 7 characters
    if (username.length() > 7) {
       return "";
     }
@@ -266,7 +264,7 @@ public static boolean safePassword(String password) {
  boolean hasSpecialChar = false;
  boolean isAlphanumeric = false;
  boolean hasConsecutiveChar = false;
- char prevChar = '\0'; // initialize to null character
+ char prevChar = '\0'; // gets the null character
  int consecutiveCount = 1;
  for (char c : password.toCharArray()) {
      if (Character.isUpperCase(c)) {
@@ -286,7 +284,7 @@ public static boolean safePassword(String password) {
      } else {
          consecutiveCount = 1;
      }
-     if (consecutiveCount > 2) {
+     if (consecutiveCount >= 2) {
          hasConsecutiveChar = true;
          break;
      }
