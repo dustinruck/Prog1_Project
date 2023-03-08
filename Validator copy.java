@@ -7,6 +7,20 @@ public class Validator {
 
         }
 	
+// if characters '-' or '.' return true, '_' is returned true
+public static boolean isSpecialChar(char c) {
+    boolean allowUnderscore = true;
+    if (c == '-' || c == '.') {
+        return true;
+    }
+    if (allowUnderscore && c == '_') {
+        return true;
+    }
+    return false;
+}
+
+
+
 	
 	// isAlphaNum() - check if a character is alphanumeric
 
