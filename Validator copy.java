@@ -8,8 +8,7 @@ public class Validator {
         }
 	
 // if characters '-' or '.' return true, '_' is returned true
-public static boolean isSpecialChar(char c) {
-    boolean allowUnderscore = true;
+public static boolean isSpecialChar(char c, boolean allowUnderscore) {
     if (c == '-' || c == '.') {
         return true;
     }

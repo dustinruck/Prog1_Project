@@ -150,6 +150,7 @@ public class Validator {
             return "";
         }
 
+        
         // check if input contains only allowed characters
         for (int i = 0; i < username.length(); i++) {
             char c = username.charAt(i);
